@@ -2,6 +2,8 @@ const title = "First Project"
 console.log(typeof title)
 const screens = "Простые, Сложные, Интерактивные"
 console.log(screens.length)
+console.log(screens.toLowerCase())
+console.log(screens.split(", "))
 const screenPrice = 230
 const rollback = 10
 const fullPrice = 500
