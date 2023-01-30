@@ -8,6 +8,7 @@ const screenPrice = 230
 const rollback = 10
 const fullPrice = 500
 console.log(screenPrice && fullPrice)
+console.log(fullPrice * (rollback / 100))
 console.log(typeof fullPrice)
 const adaptive = true
 console.log(typeof adaptive)
