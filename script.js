@@ -17,6 +17,3 @@ console.log("Стоимость верстки экранов", screenPrice, "$"
 console.log("Стоимость разработки сайта", fullPrice, "$");
 
 console.log(fullPrice * (rollback / 100))
-
-let num = (266219).toString();
-console.log(num[0] * num[1] * num[2] * num[3] * num[4] * num[5]);
