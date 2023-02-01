@@ -1,9 +1,11 @@
-const title = 'First Project';
-const screens = 'Простые, Сложные, Интерактивные';
-const screenPrice = 230;
+'use strict';
+
+const title = prompt('Как называется ваш проект?');
+const screens = prompt('Какие типы экранов нужно разработать?', "Простые, Сложные, Интерактивные");
+const screenPrice = prompt('Сколько будет стоить данная работа?', "12000");
 const rollback = 10;
-const fullPrice = 500;
-const adaptive = true;
+const fullPrice = 30000;
+const adaptive = confirm('Нужен ли адаптив на сайте?');
 
 console.log(typeof title);
 console.log(typeof fullPrice);
