@@ -10,9 +10,26 @@ let service1 = +prompt('Какой дополнительный тип услу�
 let servicePrice1 = +prompt('Сколько это будет стоить?');
 let service2 = +prompt('Какой дополнительный тип услуги нужен?');
 let servicePrice2 = +prompt('Сколько это будет стоить?');
+
 let fullPrice = screenPrice + servicePrice1 + servicePrice2;
 let outsourcePrice = fullPrice * (rollback / 100);
-let servicePercentPrice = fullPrice - outsourcePrice;
+let servicePercentPrice = Math.ceil(fullPrice - outsourcePrice);
+
+let n = fullPrice;
+
+switch (true) {
+    case n >= 3000:
+        console.log("Даем скидку в 10 %");
+        break
+    case 15000 < n && n < 30000:
+        console.log("Даем скидку в 5%");
+        break
+    case 0 <= n && n <= 15000:
+        console.log("Скидка не предусмотрена");
+        break
+    case n < 0:
+        console.log("Скидка не предусмотрена");
+};
 
 console.log(typeof title);
 console.log(typeof fullPrice);
