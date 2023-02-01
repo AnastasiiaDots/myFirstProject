@@ -2,10 +2,15 @@
 
 const title = prompt('Как называется ваш проект?');
 const screens = prompt('Какие типы экранов нужно разработать?', "Простые, Сложные, Интерактивные");
-const screenPrice = prompt('Сколько будет стоить данная работа?', "12000");
+const screenPrice = +prompt('Сколько будет стоить данная работа?', "12000");
 const rollback = 10;
-const fullPrice = 30000;
+
 const adaptive = confirm('Нужен ли адаптив на сайте?');
+let service1 = +prompt('Какой дополнительный тип услуги нужен?');
+let servicePrice1 = +prompt('Сколько это будет стоить?');
+let service2 = +prompt('Какой дополнительный тип услуги нужен?');
+let servicePrice2 = +prompt('Сколько это будет стоить?');
+const fullPrice = screenPrice + servicePrice1 + servicePrice2;
 
 console.log(typeof title);
 console.log(typeof fullPrice);
