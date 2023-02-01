@@ -10,7 +10,9 @@ let service1 = +prompt('Какой дополнительный тип услу�
 let servicePrice1 = +prompt('Сколько это будет стоить?');
 let service2 = +prompt('Какой дополнительный тип услуги нужен?');
 let servicePrice2 = +prompt('Сколько это будет стоить?');
-const fullPrice = screenPrice + servicePrice1 + servicePrice2;
+let fullPrice = screenPrice + servicePrice1 + servicePrice2;
+let outsourcePrice = fullPrice * (rollback / 100);
+let servicePercentPrice = fullPrice - outsourcePrice;
 
 console.log(typeof title);
 console.log(typeof fullPrice);
@@ -22,5 +24,5 @@ console.log(screens.toLowerCase().split(", "));
 console.log("Стоимость верстки экранов", screenPrice, "$");
 console.log("Стоимость разработки сайта", fullPrice, "$");
 
-console.log(fullPrice * (rollback / 100))
+console.log(servicePercentPrice)
 
