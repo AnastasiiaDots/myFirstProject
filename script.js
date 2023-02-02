@@ -15,20 +15,18 @@ let fullPrice = screenPrice + servicePrice1 + servicePrice2;
 let outsourcePrice = fullPrice * (rollback / 100);
 let servicePercentPrice = Math.ceil(fullPrice - outsourcePrice);
 
-let n = fullPrice;
-
 switch (true) {
-    case n >= 3000:
+    case fullPrice >= 3000:
         console.log("Даем скидку в 10 %");
-        break
-    case 15000 < n && n < 30000:
+        break;
+    case fullPrice >= 15000:
         console.log("Даем скидку в 5%");
-        break
-    case 0 <= n && n <= 15000:
+        break;
+    case fullPrice >= 0:
         console.log("Скидка не предусмотрена");
-        break
+        break;
     case n < 0:
-        console.log("Скидка не предусмотрена");
+        console.log("Что то пошло не так");
 };
 
 console.log(typeof title);
