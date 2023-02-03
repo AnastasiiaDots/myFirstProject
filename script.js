@@ -10,7 +10,6 @@ let fullPrice;
 let servicePercentPrice;
 let service1;
 let service2;
-let outsourcePrice = fullPrice * (rollback / 100);
 
 // проверка на число, ! дает противоположное значение
 const isNumber = function (num) {
@@ -60,7 +59,7 @@ const getTitle = function () {
 };
 
 const getServicePercentPrices = function () {
-    return fullPrice - outsourcePrice
+    return fullPrice - (fullPrice * (rollback / 100))
 };
 
 const getRollbackMessage = function (price) {
@@ -94,6 +93,8 @@ console.log(getRollbackMessage(fullPrice));
 
 
 console.log(screens.toLowerCase().split(", "));
+console.log('servicePercentPrice', servicePercentPrice)
+
 
 console.log("Стоимость верстки экранов", screenPrice, "$");
 console.log("Стоимость разработки сайта", fullPrice, "$");
