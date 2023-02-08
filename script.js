@@ -1,7 +1,5 @@
 'use strict';
 
-
-
 const appData = {
     title: '',
     screens: '',
@@ -13,6 +11,7 @@ const appData = {
     servicePercentPrice: 0,
     service1: '',
     service2: '',
+
     asking: function () {
         appData.title = prompt('Как называется ваш проект?', 'Калькулятор верстки');
         appData.screens = prompt('Какие типы экранов нужно разработать?', 'Простые, Сложные, Интерактивные');
@@ -53,7 +52,7 @@ const appData = {
     },
 
     getFullPrice: function () {
-        return +appData.screenPrice + appData.allServicePrices;
+        return + appData.screenPrice + appData.allServicePrices;
     },
 
     getTitle: function () {
@@ -74,24 +73,33 @@ const appData = {
         } else if (price < 0) {
             return 'Что то пошло не так'
         }
-    }
+    },
+
+    logger: function () {
+        for (let key in appData) {
+            console.log(key + appData[key]);
+        }
+    },
+
+    start: function () {
+        this.asking();
+        this.allServicePrices = this.getAllServicePrices();
+        this.fullPrice = this.getFullPrice();
+        this.title = this.getTitle();
+        this.servicePercentPrice = this.getServicePercentPrices();
+
+        this.logger();
+    },
+
 };
 
+// // appData.asking();
+// // appData.allServicePrices = getAllServicePrices();
+// // appData.fullPrice = getFullPrice();
+// // appData.title = getTitle();
+// // appData.servicePercentPrice = getServicePercentPrices();
+appData.start();
 
-
-
-
-
-
-
-
-
-appData.asking();
-appData.allServicePrices = getAllServicePrices();
-appData.fullPrice = getFullPrice();
-appData.title = getTitle();
-appData.servicePercentPrice = getServicePercentPrices();
-
-console.log(appData.fullPrice);
-console.log(appData.servicePercentPrice);
+// // console.log(appData.fullPrice);
+// // console.log(appData.servicePercentPrice);
 
