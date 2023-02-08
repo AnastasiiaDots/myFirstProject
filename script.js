@@ -18,7 +18,7 @@ const appData = {
 
         do {
             appData.screenPrice = prompt('Сколько будет стоить данная работа?')
-        } while (!isNumber(appData.screenPrice));
+        } while (!this.isNumber(appData.screenPrice));
 
         appData.adaptive = confirm('Нужен ли адаптив на сайте?');
     },
@@ -43,7 +43,7 @@ const appData = {
 
             do {
                 servicPrice = prompt('Сколько это будет стоить?')
-            } while (!isNumber(servicPrice))
+            } while (!this.isNumber(servicPrice))
 
             sum += + servicPrice
         }
@@ -76,8 +76,8 @@ const appData = {
     },
 
     logger: function () {
-        for (let key in appData) {
-            console.log(key + appData[key]);
+        for (let key in this) {
+            console.log(key + this[key]);
         }
     },
 
