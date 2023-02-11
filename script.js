@@ -21,7 +21,7 @@ const appData = {
 
         do {
             appData.title = prompt('Как называется ваш проект?')
-        } while (appData.isNumber(appData.title))
+        } while (appData.title === null || typeof appData.title !== 'string' || isNaN(appData.title) === false);
 
 
         for (let i = 0; i < 2; i++) {
@@ -30,7 +30,7 @@ const appData = {
 
             do {
                 name = prompt('Какие типы экранов нужно разработать?')
-            } while (appData.isNumber(name))
+            } while (name === null || typeof name !== 'string' || isNaN(name) === false)
 
 
             do {
@@ -47,7 +47,7 @@ const appData = {
 
             do {
                 name = prompt('Какой дополнительный тип услуги нужен?')
-            } while (appData.isNumber(name))
+            } while (name === null || typeof name !== 'string' || isNaN(name) === false)
 
             do {
                 price = prompt('Сколько это будет стоить?')
@@ -112,4 +112,6 @@ const appData = {
 
 
 appData.start();
+
+
 
