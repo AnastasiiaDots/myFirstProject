@@ -21,9 +21,6 @@ const totalCountRollback = document.getElementsByClassName('.total-input')[4];
 
 let screen = document.querySelectorAll('.screen');
 
-
-
-
 const appData = {
     title: '',
     screens: [], //aray property
