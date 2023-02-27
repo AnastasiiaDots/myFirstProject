@@ -47,6 +47,7 @@ const appData = {
             // appData.servicePercentPrice();
             rangeValue.innerHTML = +appData.rollback + '%';
         }
+        console.log(rangeValue);
         range.addEventListener('input', inputRange)
     },
 
@@ -67,8 +68,11 @@ const appData = {
             appData.screens.push({
                 id: index,
                 name: selectName,
-                price: +select.value * +input.value
+                price: +select.value * +input.value,
+                count: +input.value,
+
             })
+
         });
     },
 
@@ -101,8 +105,11 @@ const appData = {
     },
 
     addPrices: function () {
+        appData.screenPrice = 0;
+        appData.totalCount = 0;
         for (let screens of appData.screens) {
-            appData.screenPrice += +screens.price
+            appData.screenPrice += +screens.price,
+                appData.totalCount += +screens.count
         }
         for (let key in appData.servicesNumber) {
             appData.servicePricesNumber += appData.servicesNumber[key]
@@ -117,42 +124,49 @@ const appData = {
 
     showResult: function () {
         total.value = appData.screenPrice
+        totalCount.value = appData.totalCount
         totalCountOther.value = appData.servicePercentPrice + appData.servicePricesNumber
         totalFullCount.value = appData.fullPrice
         totalCountRollback.value = appData.servicePercentPrice
-    },
-
-
-    getRollbackMessage: function (price) {
-        if (price >= 30000) {
-            return 'Даем скидку в 10 %'
-        } else if (price >= 15000) {
-            return 'Даем скидку в 5%'
-        } else if (price >= 0) {
-            return 'Скидка не предусмотрена'
-        } else if (price < 0) {
-            return 'Что то пошло не так'
-        }
     },
 
     logger: function () {
         console.log(appData.fullPrice);
         console.log(appData.servicePercentPrice);
         console.log(appData.screens);
+        console.log(appData.totalCount);
+    },
+
+    checkScreenInputs: function () {
+        const screens = document.querySelectorAll('.screen');
+        let isValid = true;
+
+        screens.forEach(function (screen) {
+            const select = screen.querySelector('select');
+            const input = screen.querySelector('input');
+
+            if (!input.value || select.selectedIndex === 0) {
+                isValid = false;
+            }
+        });
+
+        btnStart.disabled = !isValid;
     },
 
     start: function () {
-        appData.addScreens();
-        appData.addServices();
-        appData.addPrices();
-        // appData.getServicePercentPrices();
+        if (appData.checkScreenInputs()) {
+            appData.addScreens();
+            appData.addServices();
+            appData.addPrices();
+            appData.showResult();
 
+        } else {
+            alert('Fill the screen feild')
+        }
         appData.logger();
-        appData.showResult();
     },
 
 };
-
 
 appData.init();
 
