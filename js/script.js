@@ -13,7 +13,6 @@ const otherItemNumber = document.querySelectorAll('.other-items.number');
 const range = document.querySelector('.rollback input');
 const rangeValue = document.querySelector('.rollback .range-value');
 
-
 const total = document.getElementsByClassName('total-input')[0];
 const totalCount = document.getElementsByClassName('total-input')[1];
 const totalCountOther = document.getElementsByClassName('total-input')[2];
@@ -27,7 +26,7 @@ const appData = {
     screens: [], //aray property
     screenPrice: 0,
     adaptive: true,
-    rollback: 10,
+    rollback: 0,
     servicePricesPercent: 0,
     servicePricesNumber: 0,
     fullPrice: 0,
@@ -45,11 +44,8 @@ const appData = {
             // appData.servicePercentPrice();
             rangeValue.innerHTML = +appData.rollback + '%';
         }
-
-        rangeValue.min = 10;
         range.addEventListener('input', inputRange)
     },
-
 
     addTitle: function () {
         document.title = title.textContent
@@ -67,9 +63,7 @@ const appData = {
                 name: selectName,
                 price: +select.value * +input.value,
                 count: +input.value,
-
             })
-
         });
     },
 
@@ -94,7 +88,6 @@ const appData = {
         })
         console.log(appData);
     },
-
 
     addScreenBlock: function () {
         const screens = document.querySelectorAll('.screen');
