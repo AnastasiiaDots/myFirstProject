@@ -13,6 +13,7 @@ const otherItemNumber = document.querySelectorAll('.other-items.number');
 const range = document.querySelector('.rollback input');
 const rangeValue = document.querySelector('.rollback .range-value');
 
+
 const total = document.getElementsByClassName('total-input')[0];
 const totalCount = document.getElementsByClassName('total-input')[1];
 const totalCountOther = document.getElementsByClassName('total-input')[2];
@@ -20,8 +21,6 @@ const totalFullCount = document.getElementsByClassName('total-input')[3];
 const totalCountRollback = document.getElementsByClassName('total-input')[4];
 
 let screens = document.querySelectorAll('.screen');
-
-
 
 const appData = {
     title: '',
@@ -36,7 +35,6 @@ const appData = {
     servicesPercent: {}, //object property
     servicesNumber: {},
 
-
     init: function () {
         appData.addTitle();
         btnStart.addEventListener('click', appData.start);
@@ -47,7 +45,8 @@ const appData = {
             // appData.servicePercentPrice();
             rangeValue.innerHTML = +appData.rollback + '%';
         }
-        console.log(rangeValue);
+
+        rangeValue.min = 10;
         range.addEventListener('input', inputRange)
     },
 
@@ -58,8 +57,6 @@ const appData = {
     },
 
     addScreens: function () {
-        screens = document.querySelectorAll('.screen');
-
         screens.forEach(function (screen, index) {
             const select = screen.querySelector('select');
             const input = screen.querySelector('input');
@@ -100,8 +97,16 @@ const appData = {
 
 
     addScreenBlock: function () {
+        const screens = document.querySelectorAll('.screen');
         const cloneScreen = screens[0].cloneNode(true);
+
+        const inputs = cloneScreen.querySelectorAll('input[type="text"]');
+        inputs.forEach(function (input) {
+            input.value = '';
+        });
+
         screens[screens.length - 1].after(cloneScreen)
+
     },
 
     addPrices: function () {
@@ -138,19 +143,19 @@ const appData = {
     },
 
     checkScreenInputs: function () {
-        const screens = document.querySelectorAll('.screen');
+        const screenBlock = document.querySelectorAll('.screen')
         let isValid = true;
 
-        screens.forEach(function (screen) {
+        screenBlock.forEach(function (screen) {
             const select = screen.querySelector('select');
             const input = screen.querySelector('input');
 
-            if (!input.value || select.selectedIndex === 0) {
+            if (!input.value || isNaN(+input.value) || select.selectedIndex === 0) {
                 isValid = false;
             }
         });
 
-        btnStart.disabled = !isValid;
+        return isValid;
     },
 
     start: function () {
@@ -161,7 +166,7 @@ const appData = {
             appData.showResult();
 
         } else {
-            alert('Fill the screen feild')
+            alert('Fill the screen field')
         }
         appData.logger();
     },
