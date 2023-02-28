@@ -41,7 +41,6 @@ const appData = {
 
         function inputRange() {
             appData.rollback = +range.value;
-            // appData.servicePercentPrice();
             rangeValue.innerHTML = +appData.rollback + '%';
         }
         range.addEventListener('input', inputRange)
@@ -53,6 +52,8 @@ const appData = {
     },
 
     addScreens: function () {
+        screens = document.querySelectorAll('.screen');
+
         screens.forEach(function (screen, index) {
             const select = screen.querySelector('select');
             const input = screen.querySelector('input');
@@ -86,11 +87,9 @@ const appData = {
                 appData.servicesNumber[label.textContent] = +input.value
             }
         })
-        console.log(appData);
     },
 
     addScreenBlock: function () {
-        const screens = document.querySelectorAll('.screen');
         const cloneScreen = screens[0].cloneNode(true);
 
         const inputs = cloneScreen.querySelectorAll('input[type="text"]');
@@ -100,6 +99,7 @@ const appData = {
 
         screens[screens.length - 1].after(cloneScreen)
 
+        appData.addScreens()
     },
 
     addPrices: function () {
@@ -136,10 +136,9 @@ const appData = {
     },
 
     checkScreenInputs: function () {
-        const screenBlock = document.querySelectorAll('.screen')
         let isValid = true;
 
-        screenBlock.forEach(function (screen) {
+        screens.forEach(function (screen) {
             const select = screen.querySelector('select');
             const input = screen.querySelector('input');
 
