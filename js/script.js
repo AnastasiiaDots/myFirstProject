@@ -52,8 +52,6 @@ const appData = {
     },
 
     addScreens: function () {
-        screens = document.querySelectorAll('.screen');
-
         screens.forEach(function (screen, index) {
             const select = screen.querySelector('select');
             const input = screen.querySelector('input');
@@ -97,9 +95,9 @@ const appData = {
             input.value = '';
         });
 
-        screens[screens.length - 1].after(cloneScreen)
+        screens[screens.length - 1].after(cloneScreen);
 
-        appData.addScreens()
+        screens = document.querySelectorAll('.screen');
     },
 
     addPrices: function () {
