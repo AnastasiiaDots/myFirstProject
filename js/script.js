@@ -168,9 +168,9 @@ const appData = {
 
     resetScreens: function () {
         screens.forEach((screen, index) => {
-            if (index > 0) { // remove all screens except the first one
+            if (index > 0) {
                 screen.remove();
-            } else { // reset the first screen
+            } else {
                 const select = screen.querySelector('select');
                 const input = screen.querySelector('input[type=text]');
                 select.selectedIndex = 0;
