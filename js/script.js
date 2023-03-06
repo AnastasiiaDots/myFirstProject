@@ -151,27 +151,10 @@ const appData = {
     },
 
     reset: function () {
-
-        screens.forEach((screen) => {
-            const select = screen.querySelector('select');
-            const input = screen.querySelector('input[type="text"]');
-            select.selectedIndex = 0;
-            input.value = '';
-        });
-        otherItemPercent.forEach((item) => {
-            const check = item.querySelector('input[type=checkbox]');
-            check.checked = false;
-            const input = item.querySelector('input[type=text]');
-            input.value = '';
-        });
-        otherItemNumber.forEach((item) => {
-            const check = item.querySelector('input[type=checkbox]');
-            check.checked = false;
-            const input = item.querySelector('input[type=text]');
-            input.value = '';
-        });
-        range.value = 0;
-        rangeValue.innerHTML = '0%';
+        this.resetScreens();
+        this.resetServices();
+        this.resetRange();
+        this.resetData();
 
         this.screens = [];
         this.servicesPercent = {};
@@ -181,7 +164,37 @@ const appData = {
         this.servicePricesNumber = 0;
         this.fullPrice = 0;
         this.servicePercentPrice = 0;
+    },
 
+    resetScreens: function () {
+        screens.forEach((screen, index) => {
+            if (index > 0) { // remove all screens except the first one
+                screen.remove();
+            } else { // reset the first screen
+                const select = screen.querySelector('select');
+                const input = screen.querySelector('input[type=text]');
+                select.selectedIndex = 0;
+                input.value = '';
+            }
+        });
+    },
+
+    resetServices: function () {
+        otherItemPercent.forEach((item) => {
+            const check = item.querySelector('input[type=checkbox]');
+            check.checked = false;
+        });
+        otherItemNumber.forEach((item) => {
+            const check = item.querySelector('input[type=checkbox]');
+            check.checked = false;
+        });
+    },
+
+    resetRange: function () {
+        range.value = 0;
+        rangeValue.innerHTML = '0%';
+    },
+    resetData: function () {
         const inputsAndSelects = document.querySelectorAll('input[type=text], select, .screen-btn,input[type=checkbox], input[type=range]');
         inputsAndSelects.forEach((input) => {
             if (!input.classList.contains('total-input')) {
@@ -198,7 +211,6 @@ const appData = {
         totalFullCount.value = '';
         totalCountRollback.value = '';
     },
-
 
     start: function () {
         if (appData.checkScreenInputs()) {
