@@ -236,7 +236,7 @@ const appData = {
         } else {
             alert('Fill the screen field')
         }
-        appData.logger();
+        this.logger();
 
     },
 
